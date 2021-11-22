@@ -1,0 +1,14 @@
+.Footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.Footer-links {
+    float: right;
+}
+
+.Footer-links li {
+    display: inline;
+    padding-right: 10px;
+}
