@@ -1,6 +1,6 @@
 import './App.css';
 import { SecretSanta } from './SecretSanta';
-import { Footer } from './Footer';
+import { Footer } from './Common/Footer';
 
 function App() {
   return (
