@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { marked } from 'marked';
-import { useState } from 'react/cjs/react.development';
 import './Footer.css';
 import { Overlay } from './Overlay';
 
