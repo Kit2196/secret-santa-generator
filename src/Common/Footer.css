@@ -8,7 +8,21 @@
     float: right;
 }
 
-.Footer-links li {
+.Footer-links > li {
     display: inline;
     padding-right: 10px;
+
+    text-decoration: underline;
+}
+
+.Footer-links > li:hover {
+    cursor: pointer;
+}
+
+.Footer-links a {
+    color: black;
+}
+
+.Changelog {
+    text-align: left;
 }
