@@ -21,7 +21,7 @@ export function ResultPage(props) {
         setAssignedVisibility(!assignedVisible);
     };
 
-    const handleConfirm = () => {
+    const handleFinish = () => {
         props.toPage(PAGE.START);
     };
 
@@ -41,7 +41,7 @@ export function ResultPage(props) {
             <div className='ButtonBar'>
                 <button onClick={handleBack}>Back</button>
                 <button onClick={handleShow}>Show All!</button>
-                <button onClick={handleConfirm}>Confirm</button>
+                <button onClick={handleFinish}>Finished</button>
             </div>
             {overlayContent && <Overlay content={overlayContent} disableOverlay={() => setOverlayContent(null)}/>}
         </div>

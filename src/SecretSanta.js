@@ -20,6 +20,7 @@ export class SecretSanta extends React.Component {
         this.toPage = this.toPage.bind(this);
         this.addSanta = this.addSanta.bind(this);
         this.removeSanta = this.removeSanta.bind(this);
+        this.removeAllSantas = this.removeAllSantas.bind(this);
         this.assignRecipients = this.assignRecipients.bind(this);
     }
 
@@ -61,6 +62,12 @@ export class SecretSanta extends React.Component {
         new_state.santas = new_state.santas.filter((santa) => (santa.id !== targetID));
         this.setState(new_state);
     }
+
+    removeAllSantas() {
+        let new_state = this.state;
+        new_state.santas = [];
+        this.setState(new_state);
+    }
     
     assignRecipients() {
         // Generate new pattern
@@ -81,7 +88,11 @@ export class SecretSanta extends React.Component {
         
         switch(this.state.page) {
             case PAGE.START:
-                current_page = <StartPage onStart={() => {this.toPage(PAGE.EDIT)}}/>;
+                current_page = 
+                    <StartPage 
+                        onStart={() => {this.toPage(PAGE.EDIT)}}
+                        removeAllSantas={this.removeAllSantas}
+                    />;
                 hasHeader = false;
                 break;
             case PAGE.EDIT:
