@@ -97,6 +97,7 @@ export class SecretSanta extends React.Component {
                 current_page =
                     <ResultPage 
                         santas={this.state.santas}
+                        assignRecipients={this.assignRecipients}
                         toPage={this.toPage}
                     />
                 break;

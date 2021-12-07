@@ -10,6 +10,7 @@ export function SantaTable(props) {
                         santa={santa} 
                         showResult={props.showResult} 
                         removeSanta={props.removeSanta}
+                        assigned={props.assignedVisible ? props.santas[santa.assigned] : null }
                     />
                 ))}
             </ul>
