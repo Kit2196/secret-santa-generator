@@ -6,7 +6,11 @@ export function SantaTable(props) {
         return (
             <ul className='SantaTable'> 
                 { props.santas.map( (santa) => (
-                    <SantaCell santa={santa} removeSanta={props.removeSanta}/>
+                    <SantaCell 
+                        santa={santa} 
+                        showResult={props.showResult} 
+                        removeSanta={props.removeSanta}
+                    />
                 ))}
             </ul>
         );
