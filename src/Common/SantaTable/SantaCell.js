@@ -6,9 +6,9 @@ export function SantaCell(props) {
     };
 
     return (
-        <li className='SantaCell'>
+        <li key={props.santa.id} className='SantaCell' >
             <p>{props.santa.name}</p>
-            <button className='CellRemoveBtn' onClick={handleRemove}>✖</button>
+            { props.removeSanta && <button className='CellRemoveBtn' onClick={handleRemove}>✖</button> }
         </li>
     );
 }

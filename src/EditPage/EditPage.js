@@ -1,6 +1,6 @@
 import React from "react";
 import './EditPage.css';
-import { SantaTable } from "./SantaTable";
+import { SantaTable } from "../Common/SantaTable/SantaTable";
 import { SantaInput } from "./SantaInput";
 
 export function EditPage(props){

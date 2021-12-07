@@ -1,13 +1,11 @@
 import React from "react";
 import './ResultPage.css';
-import { Header } from "../Common/Header";
+import { SantaTable } from "../Common/SantaTable/SantaTable";
 
-export class ResultPage extends React.Component {
-    render() {
-        return (
-            <div className='SantaResult'>
-                <Header />
-            </div>
-        );
-    }
+export function ResultPage(props) {
+    return (
+        <div className='SantaResult'>
+            <SantaTable santas={props.santas} />
+        </div>
+    );
 }

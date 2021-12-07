@@ -33,7 +33,20 @@ export class SecretSanta extends React.Component {
         this.setState(new_state);
     }
 
+    // State-related functions
     addSanta(santaName) {
+        // no empty name
+        if(santaName === '') {
+            return false;
+        }
+
+        // no repeated name
+        for(let i = 0; i < this.state.santas.length; i++) {
+            if(this.state.santas[i].name === santaName) {
+                return false;
+            }
+        }
+
         const new_santa = {
             id: Date.now(),
             name: santaName
@@ -42,6 +55,8 @@ export class SecretSanta extends React.Component {
         let new_state = this.state;
         new_state.santas = [ ...new_state.santas, new_santa ];
         this.setState(new_state);
+
+        return true;
     }
 
     removeSanta(targetID) {
@@ -76,7 +91,9 @@ export class SecretSanta extends React.Component {
                 break;
             case PAGE.RESULT:
                 current_page =
-                    <ResultPage />
+                    <ResultPage 
+                        santas={this.state.santas}
+                    />
                 buttons = [
                     [() => this.toPage(PAGE.EDIT), 'Back', true],
                     [() => this.toPage(PAGE.START), 'Finish', true]

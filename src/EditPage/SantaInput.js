@@ -9,8 +9,9 @@ export function SantaInput(props) {
 
     const handleAdd = (e) => {
         e.preventDefault();
-        if (newSanta !== '') {
-            props.addSanta(newSanta);
+
+        if(props.addSanta(newSanta)) {
+            // if new name is valid, reset the textbox
             setNewSanta('');
         }
     }
