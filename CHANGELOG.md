@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Santa list will now be reset whenever the start screen is loaded
+- Adjusted Santa Table layout to better fit Result Page
 
 ## [0.2] - 2021-12-7
 ###  Added

@@ -15,9 +15,11 @@ export function SantaCell(props) {
             className='SantaCell' 
             onClick={props.showResult? handleShowResult : null}
         >
-            <p>{props.santa.name}</p>
+            <div className='SantaCell-Text'>
+                <p>{props.santa.name}</p>
+                { props.assigned && <p className="small-font">Assigned to {props.assigned.name}</p> }
+            </div>
             { props.removeSanta && <button className='CellRemoveBtn' onClick={handleRemove}>✖</button> }
-            { props.assigned && <p>Assigned to {props.assigned.name}</p> }
         </li>
     );
 }

@@ -12,6 +12,10 @@
   justify-content: space-evenly;
 }
 
+.small-font {
+  font-size: small;
+}
+
 img {
   height: 100%;
 }

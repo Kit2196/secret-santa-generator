@@ -1,0 +1,39 @@
+.SantaTable {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0 auto;
+}
+
+.SantaCell {
+    display: inline-flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 50px;
+    width: 200px;
+    margin: 10px;
+
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.SantaCell > button {
+    margin: 10px;
+    float: right;
+
+    height: 30px;
+    width: 30px;
+
+    border: none;
+    background: none;
+}
+
+.SantaCell-Text {
+    margin: 10px;
+    display: inline-flex;
+
+    text-align: left;
+    flex-direction: column;
+}

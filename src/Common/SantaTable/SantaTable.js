@@ -1,4 +1,5 @@
 import React from "react";
+import './SantaTable.css';
 import { SantaCell } from "./SantaCell";
 
 export function SantaTable(props) {
