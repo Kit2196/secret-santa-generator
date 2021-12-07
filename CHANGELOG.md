@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - No-duplicated-name validation for santa
 - Basic Layout for "Result Page"
 - Show assignment result(WIP) by clicking santa block on "Result Page"
+- Functions for recipient-assignments
 
 ### Changed
 - Refactored "SantaTable" and its child component to Common folder

@@ -5,6 +5,7 @@ import { EditPage } from "./EditPage/EditPage";
 import { ResultPage } from "./ResultPage/ResultPage";
 import { PageControl } from "./Common/PageControl";
 import { Header } from "./Common/Header";
+import { Utils } from "./Utils";
 
 const PAGE = {
     START: 0,
@@ -25,6 +26,7 @@ export class SecretSanta extends React.Component {
         this.toPage = this.toPage.bind(this);
         this.addSanta = this.addSanta.bind(this);
         this.removeSanta = this.removeSanta.bind(this);
+        this.assignRecipients = this.assignRecipients.bind(this);
     }
 
     toPage(page) {
@@ -49,7 +51,8 @@ export class SecretSanta extends React.Component {
 
         const new_santa = {
             id: Date.now(),
-            name: santaName
+            name: santaName,
+            assigned: null
         };
         
         let new_state = this.state;
@@ -63,6 +66,19 @@ export class SecretSanta extends React.Component {
         let new_state = this.state;
         new_state.santas = new_state.santas.filter((santa) => (santa.id !== targetID));
         this.setState(new_state);
+    }
+
+    assignRecipients() {
+        // Generate new pattern
+        const assignments = Utils.derangement(this.state.santas.length);
+
+        let newState = this.state;
+        // Assign recipient for each santa to the 'assigned' field
+        for( let i = 0; i < this.state.santas.length; i++ ) {
+            newState.santas[i].assigned = assignments[i];
+        }
+
+        this.setState(newState);
     }
 
     render () {
