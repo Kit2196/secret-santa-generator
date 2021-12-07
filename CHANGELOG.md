@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Refactored "SantaTable" and its child component to Common folder
 - Delete button is shown in "SantaCell" when a remove function is provided
+- MAJOR Reworked botton bar at the bottom of "Edit Page" and "Result Page"
 
 ## [0.1] - 2021-12-7
 ### Added

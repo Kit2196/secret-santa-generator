@@ -3,15 +3,9 @@ import './SecretSanta.css';
 import { StartPage } from "./StartPage/StartPage";
 import { EditPage } from "./EditPage/EditPage";
 import { ResultPage } from "./ResultPage/ResultPage";
-import { PageControl } from "./Common/PageControl";
 import { Header } from "./Common/Header";
 import { Utils } from "./Utils";
-
-const PAGE = {
-    START: 0,
-    EDIT: 1,
-    RESULT: 2
-}
+import { PAGE } from "./constants";
 
 export class SecretSanta extends React.Component {
     constructor(props) {
@@ -67,7 +61,7 @@ export class SecretSanta extends React.Component {
         new_state.santas = new_state.santas.filter((santa) => (santa.id !== targetID));
         this.setState(new_state);
     }
-
+    
     assignRecipients() {
         // Generate new pattern
         const assignments = Utils.derangement(this.state.santas.length);
@@ -84,14 +78,11 @@ export class SecretSanta extends React.Component {
     render () {
         let current_page;
         let hasHeader = true;
-        let hasPageControl = true;
-        let buttons;
         
         switch(this.state.page) {
             case PAGE.START:
                 current_page = <StartPage onStart={() => {this.toPage(PAGE.EDIT)}}/>;
                 hasHeader = false;
-                hasPageControl = false;
                 break;
             case PAGE.EDIT:
                 current_page = 
@@ -99,21 +90,15 @@ export class SecretSanta extends React.Component {
                         santas={this.state.santas}
                         addSanta={this.addSanta}
                         removeSanta={this.removeSanta}
+                        toPage={this.toPage}
                     />;
-                buttons = [
-                    [() => this.toPage(PAGE.START), 'Back', true],
-                    [() => this.toPage(PAGE.RESULT), 'Confirm', true]
-                ];
                 break;
             case PAGE.RESULT:
                 current_page =
                     <ResultPage 
                         santas={this.state.santas}
+                        toPage={this.toPage}
                     />
-                buttons = [
-                    [() => this.toPage(PAGE.EDIT), 'Back', true],
-                    [() => this.toPage(PAGE.START), 'Finish', true]
-                ];
                 break;
             default:
                 current_page = <p>Error! Page not found!</p>;
@@ -123,12 +108,6 @@ export class SecretSanta extends React.Component {
             <div className='SecretSanta'>
                 { hasHeader && <Header /> }
                 { current_page }
-                { 
-                    hasPageControl && 
-                    <PageControl 
-                        buttons={buttons}
-                    />
-                }
             </div>
         );
     }
