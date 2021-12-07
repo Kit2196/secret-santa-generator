@@ -6,12 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2021-12-7
 ### Added
-Basic README
-Overlay Component
-"Credit" overlay in Footer
-"Changelog" overlay in Footer
-MINOR Overlay for Credit and Changelog
+- Basic README
+- CHANGELOG
+- Overlay Component
+- "Credit" overlay in "Footer"
+- "Changelog" overlay in "Footer"
 
 ### Changed
-Minor changes to CSS and HTML for "Footer" Component
+- Minor changes to CSS and HTML for "Footer" Component
+
 ### Fixed
+- None
