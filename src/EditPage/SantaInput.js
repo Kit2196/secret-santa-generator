@@ -10,10 +10,8 @@ export function SantaInput(props) {
     const handleAdd = (e) => {
         e.preventDefault();
 
-        if(props.addSanta(newSanta)) {
-            // if new name is valid, reset the textbox
-            setNewSanta('');
-        }
+        props.addSanta(newSanta);
+        setNewSanta('');　// clean the textbox
     }
 
     return (
@@ -22,8 +20,9 @@ export function SantaInput(props) {
                 value={newSanta}
                 placeholder='Enter a name here...'
                 onChange={handleChange}
+                maxLength={20}
             />
-            <input type="submit" value="Add" />
+            <input type="submit" value="Add" disabled={!props.isSantaNameValid(newSanta)} />
         </form>
     );
 }

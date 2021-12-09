@@ -22,6 +22,7 @@ export class SecretSanta extends React.Component {
         this.removeSanta = this.removeSanta.bind(this);
         this.removeAllSantas = this.removeAllSantas.bind(this);
         this.assignRecipients = this.assignRecipients.bind(this);
+        this.isSantaNameValid = this.isSantaNameValid.bind(this);
     }
 
     toPage(page) {
@@ -32,6 +33,18 @@ export class SecretSanta extends React.Component {
 
     // State-related functions
     addSanta(santaName) {
+        const new_santa = {
+            id: Date.now(),
+            name: santaName,
+            assigned: null
+        };
+        
+        let new_state = this.state;
+        new_state.santas = [ ...new_state.santas, new_santa ];
+        this.setState(new_state);
+    }
+
+    isSantaNameValid(santaName) {
         // no empty name
         if(santaName === '') {
             return false;
@@ -44,17 +57,7 @@ export class SecretSanta extends React.Component {
             }
         }
 
-        const new_santa = {
-            id: Date.now(),
-            name: santaName,
-            assigned: null
-        };
-        
-        let new_state = this.state;
-        new_state.santas = [ ...new_state.santas, new_santa ];
-        this.setState(new_state);
-
-        return true;
+        return true
     }
 
     removeSanta(targetID) {
@@ -101,6 +104,7 @@ export class SecretSanta extends React.Component {
                         santas={this.state.santas}
                         addSanta={this.addSanta}
                         removeSanta={this.removeSanta}
+                        isSantaNameValid={this.isSantaNameValid}
                         toPage={this.toPage}
                     />;
                 break;

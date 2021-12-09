@@ -20,7 +20,7 @@ export function EditPage(props){
 
     return (
         <div className='EditPage'>
-            <SantaInput addSanta={props.addSanta} />
+            <SantaInput addSanta={props.addSanta} isSantaNameValid={props.isSantaNameValid} />
             <SantaTable santas={props.santas} removeSanta={props.removeSanta} />
             <div className='ButtonBar'>
                 <button onClick={handleBack}>Back</button>
