@@ -1,15 +1,17 @@
 import React from "react";
-import { CloseButton } from "react-bootstrap";
+import { Container, CloseButton, Card } from "react-bootstrap";
 import "./Overlay.css";
 
 export function Overlay(props) {
     return (
         <div className="Overlay">
-            <div className="Overlay-Container">
-                <CloseButton className='Overlay-Close-Btn' onClick={props.disableOverlay} />
-                { props.content }
-            </div>
-            <div className="Overlay-Greyscreen" onClick={props.disableOverlay}> </div>
+            <Card className="Overlay-Container">
+                <Card.Body>
+                    <CloseButton className='right' onClick={props.disableOverlay} />
+                    <Card.Text>{ props.content }</Card.Text>
+                </Card.Body>
+            </Card>
+            <Container className="Overlay-Greyscreen" onClick={props.disableOverlay} fluid> </Container>
         </div>
     );
 }
