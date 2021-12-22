@@ -1,5 +1,6 @@
 import React from "react";
 import './EditPage.css';
+import { Button } from "react-bootstrap";
 import { SantaTable } from "../Common/SantaTable/SantaTable";
 import { SantaInput } from "./SantaInput";
 import { PAGE } from "../constants";
@@ -23,8 +24,8 @@ export function EditPage(props){
             <SantaInput addSanta={props.addSanta} isSantaNameValid={props.isSantaNameValid} />
             <SantaTable santas={props.santas} removeSanta={props.removeSanta} />
             <div className='ButtonBar'>
-                <button onClick={handleBack}>Back</button>
-                <button onClick={handleConfirm} disabled={!isSantaListValid()}>Confirm</button>
+                <Button variant="outline-dark" onClick={handleBack}>Back</Button>
+                <Button variant="outline-dark" onClick={handleConfirm} disabled={!isSantaListValid()}>Confirm</Button>
             </div>
         </div>
     );

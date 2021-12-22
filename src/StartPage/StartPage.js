@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { logo } from "../constants";
 import "./StartPage.css";
 
@@ -13,7 +14,7 @@ export function StartPage(props) {
             <img src={logo} alt="logo" />
             <div>
                 <p className="App-Name">Secret Santa Generator</p>
-                <button onClick={props.onStart}>Start</button>
+                <Button variant="outline-dark" onClick={props.onStart}>Start</Button>
             </div>
         </div>
     );

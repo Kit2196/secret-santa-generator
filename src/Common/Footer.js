@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
 import { marked } from 'marked';
 import './Footer.css';
 import { Overlay } from './Overlay';
@@ -24,15 +25,17 @@ export function Footer(props) {
         );
     };
 
+    const openPage = (url) => window.open(url, "_blank");
+
     return (
         <div className='Footer'>
-            <ul className='Footer-links'>
-                <li onClick={() => setOverlayContent(creditOverlayContent)}>Credit</li>
-                <li onClick={loadChangelog}>Change Log</li>
-                <li><a href='https://github.com/Kit2196/secret-santa-generator'>Github Repository</a></li>
-                <li>My page</li>
-                <li>Other projects</li>
-            </ul>
+            <ButtonGroup className='Footer-links'>
+                <Button variant="link" onClick={() => setOverlayContent(creditOverlayContent)}>Credit</Button>
+                <Button variant="link" onClick={loadChangelog}>Change Log</Button>
+                <Button variant="link" onClick={() => openPage('https://github.com/Kit2196/secret-santa-generator')}>Github Repository</Button>
+                <Button variant="link" >My page</Button>
+                <Button variant="link" >Other projects</Button>
+            </ButtonGroup>
             {overlayContent && <Overlay content={overlayContent} disableOverlay={() => setOverlayContent(null)}/>}
         </div>
     );

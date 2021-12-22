@@ -1,4 +1,9 @@
-.SantaForm {
-    width: 100%;
+.SantaInput {
+    display: flex;
 
+    justify-content: center;
+}
+
+.SantaInput > input {
+    width: 200px;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Form, FormControl } from "react-bootstrap";
 
 export function SantaInput(props) {
     const [newSanta, setNewSanta] = useState('');
@@ -15,14 +16,19 @@ export function SantaInput(props) {
     }
 
     return (
-        <form className='SantaInput' onSubmit={handleAdd}>
-            <input 
+        <Form className='SantaInput' onSubmit={handleAdd}>
+            <FormControl 
                 value={newSanta}
                 placeholder='Enter a name here...'
                 onChange={handleChange}
-                maxLength={20}
-            />
-            <input type="submit" value="Add" disabled={!props.isSantaNameValid(newSanta)} />
-        </form>
+                maxLength={20}/>
+            <Button 
+                variant="outline-dark"
+                type="submit" 
+                value="Add" 
+                disabled={!props.isSantaNameValid(newSanta)}>
+                Add
+            </Button>
+        </Form>
     );
 }
