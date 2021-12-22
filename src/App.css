@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
 .App {
   text-align: center;
   height: 100vh;
@@ -18,4 +20,8 @@
 
 img {
   height: 100%;
+}
+
+.App-Name {
+  font-family: 'Patrick Hand SC', cursive;
 }

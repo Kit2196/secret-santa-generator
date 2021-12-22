@@ -6,7 +6,7 @@ export function Header(props) {
     return (
         <div className='Header'>
             <img src={logo} alt="logo" />
-            <p>Secret Santa Generator</p>
+            <p className="App-Name">Secret Santa Generator</p>
         </div>
     );
 }
