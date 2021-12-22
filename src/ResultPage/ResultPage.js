@@ -17,6 +17,10 @@ export function ResultPage(props) {
         props.toPage(PAGE.EDIT);
     }
 
+    const handleShuffle = () => {
+        props.assignRecipients();
+    }
+
     const handleShow = () => {
         setAssignedVisibility(!assignedVisible);
     };
@@ -40,6 +44,7 @@ export function ResultPage(props) {
             <SantaTable santas={props.santas} showResult={showResult} assignedVisible={assignedVisible}/>
             <div className='ButtonBar'>
                 <button onClick={handleBack}>Back</button>
+                <button onClick={handleShuffle}>Reshuffle!</button>
                 <button onClick={handleShow}>Show All!</button>
                 <button onClick={handleFinish}>Finished</button>
             </div>
