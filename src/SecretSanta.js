@@ -73,8 +73,21 @@ export class SecretSanta extends React.Component {
     }
     
     assignRecipients() {
+        const isResultValid = (result) => {
+            for(var i = 0; i < result.length; i++ ) {
+                if (i == result[i]) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        let assignments;
+
+        do {
         // Generate new pattern
-        const assignments = Utils.derangement(this.state.santas.length);
+            assignments = Utils.derangement(this.state.santas.length);
+        } while(!isResultValid(assignments));
 
         let newState = this.state;
         // Assign recipient for each santa to the 'assigned' field
