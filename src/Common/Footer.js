@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button, ButtonGroup, Navbar } from 'react-bootstrap';
 import { marked } from 'marked';
 import './Footer.css';
 import { Overlay } from './Overlay';
@@ -28,7 +28,7 @@ export function Footer(props) {
     const openPage = (url) => window.open(url, "_blank");
 
     return (
-        <div className='Footer'>
+        <Navbar className='Footer justify-content-center' fixed="bottom">
             <ButtonGroup className='Footer-links'>
                 <Button variant="link" onClick={() => setOverlayContent(creditOverlayContent)}>Credit</Button>
                 <Button variant="link" onClick={loadChangelog}>Change Log</Button>
@@ -37,6 +37,6 @@ export function Footer(props) {
                 <Button variant="link" >Other projects</Button>
             </ButtonGroup>
             {overlayContent && <Overlay content={overlayContent} disableOverlay={() => setOverlayContent(null)}/>}
-        </div>
+        </Navbar>
     );
 };

@@ -6,6 +6,10 @@
   width: 100vw;
 }
 
+.App-Name {
+  font-family: 'Patrick Hand SC', cursive;
+}
+
 .ButtonBar {
   width: 100%;
   
@@ -14,14 +18,14 @@
   justify-content: space-evenly;
 }
 
+.logo {
+  height: 100px;
+}
+
 .small-font {
   font-size: small;
 }
 
 img {
   height: 100%;
-}
-
-.App-Name {
-  font-family: 'Patrick Hand SC', cursive;
 }
