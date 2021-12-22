@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './ResultPage.css';
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { SantaTable } from "../Common/SantaTable/SantaTable";
 import { Overlay } from "../Common/Overlay";
 import { PAGE } from "../constants";
@@ -41,7 +41,7 @@ export function ResultPage(props) {
     }
 
     return (
-        <div className='SantaResult'>
+        <Container className='SantaResult'>
             <SantaTable santas={props.santas} showResult={showResult} assignedVisible={assignedVisible}/>
             <div className='ButtonBar'>
                 <Button variant="outline-dark" onClick={handleBack}>Back</Button>
@@ -50,6 +50,6 @@ export function ResultPage(props) {
                 <Button variant="outline-dark" onClick={handleFinish}>Finished</Button>
             </div>
             {overlayContent && <Overlay content={overlayContent} disableOverlay={() => setOverlayContent(null)}/>}
-        </div>
+        </Container>
     );
 }

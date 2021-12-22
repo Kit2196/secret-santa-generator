@@ -1,20 +1,24 @@
 import React from "react";
 import './SantaTable.css';
-import { SantaCell } from "./SantaCell";
+import { SantaCard } from "./SantaCard";
+import { Col, Container, Row } from "react-bootstrap";
 
 export function SantaTable(props) {
     if ( props.santas.length > 0 ) {
         return (
-            <ul className='SantaTable'> 
-                { props.santas.map( (santa) => (
-                    <SantaCell 
-                        santa={santa} 
-                        showResult={props.showResult} 
-                        removeSanta={props.removeSanta}
-                        assigned={props.assignedVisible ? props.santas[santa.assigned] : null }
-                    />
-                ))}
-            </ul>
+            <Container className='SantaTable' fluid >
+                <Row>
+                    { props.santas.map( (santa) => (
+                        <Col><SantaCard 
+                            santa={santa} 
+                            showResult={props.showResult} 
+                            removeSanta={props.removeSanta}
+                            assigned={props.assignedVisible ? props.santas[santa.assigned] : null }
+                        /></Col>
+                        
+                    ))}
+                </Row>
+            </Container>
         );
     } else {
         return (<p>There are no santa yet...</p>);

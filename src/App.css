@@ -18,8 +18,16 @@
   justify-content: space-evenly;
 }
 
+.left {
+  float: left;
+}
+
 .logo {
   height: 100px;
+}
+
+.right {
+  float: right;
 }
 
 .small-font {
