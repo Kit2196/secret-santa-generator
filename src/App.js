@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { SecretSanta } from './SecretSanta';
 import { Footer } from './Common/Footer';
 
