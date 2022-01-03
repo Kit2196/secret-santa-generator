@@ -22,7 +22,6 @@ export class SecretSanta extends React.Component {
         this.removeSanta = this.removeSanta.bind(this);
         this.removeAllSantas = this.removeAllSantas.bind(this);
         this.assignRecipients = this.assignRecipients.bind(this);
-        this.isSantaNameValid = this.isSantaNameValid.bind(this);
     }
 
     toPage(page) {
@@ -42,22 +41,6 @@ export class SecretSanta extends React.Component {
         let new_state = this.state;
         new_state.santas = [ ...new_state.santas, new_santa ];
         this.setState(new_state);
-    }
-
-    isSantaNameValid(santaName) {
-        // no empty name
-        if(santaName === '') {
-            return false;
-        }
-
-        // no repeated name
-        for(let i = 0; i < this.state.santas.length; i++) {
-            if(this.state.santas[i].name === santaName) {
-                return false;
-            }
-        }
-
-        return true
     }
 
     removeSanta(targetID) {
@@ -117,7 +100,6 @@ export class SecretSanta extends React.Component {
                         santas={this.state.santas}
                         addSanta={this.addSanta}
                         removeSanta={this.removeSanta}
-                        isSantaNameValid={this.isSantaNameValid}
                         toPage={this.toPage}
                     />;
                 break;
