@@ -4,9 +4,9 @@ import { SantaCard } from "./SantaCard";
 import { Col, Container, Row } from "react-bootstrap";
 
 export function SantaTable(props) {
-    if ( props.santas.length > 0 ) {
-        return (
-            <Container className='SantaTable' fluid >
+    const generateSantaCards = () => {
+        if ( props.santas.length > 0 ) {
+            return (
                 <Row>
                     { props.santas.map( (santa) => (
                         <Col><SantaCard 
@@ -15,12 +15,17 @@ export function SantaTable(props) {
                             removeSanta={props.removeSanta}
                             assigned={props.assignedVisible ? props.santas[santa.assigned] : null }
                         /></Col>
-                        
                     ))}
                 </Row>
-            </Container>
-        );
-    } else {
-        return (<p>There are no santa yet...</p>);
-    }
+            );
+        } else {
+            return <p>There are no santa yet...</p>;
+        }
+    };
+    
+    return (
+        <Container className='SantaTable' fluid >
+            { generateSantaCards() }
+        </Container>
+    );
 }

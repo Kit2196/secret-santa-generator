@@ -41,7 +41,7 @@ export function ResultPage(props) {
     }
 
     return (
-        <Container className='SantaResult'>
+        <Container className='ResultPage' fluid>
             <SantaTable santas={props.santas} showResult={showResult} assignedVisible={assignedVisible}/>
             <div className='ButtonBar'>
                 <Button variant="outline-dark" onClick={handleBack}>Back</Button>

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
 
+p {
+  margin: 0;
+}
+
 .App {
   text-align: center;
   height: 100vh;
@@ -18,10 +22,6 @@
   justify-content: space-evenly;
 }
 
-.left {
-  float: left;
-}
-
 .logo {
   height: 100px;
 }
@@ -30,10 +30,12 @@
   float: right;
 }
 
-.small-font {
-  font-size: small;
-}
-
 img {
   height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    height: 70px;
+  }
 }

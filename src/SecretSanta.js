@@ -4,6 +4,7 @@ import { StartPage } from "./StartPage/StartPage";
 import { EditPage } from "./EditPage/EditPage";
 import { ResultPage } from "./ResultPage/ResultPage";
 import { Header } from "./Common/Header";
+import { Footer } from './Common/Footer';
 import { Utils } from "./Utils";
 import { PAGE } from "./constants";
 
@@ -58,7 +59,7 @@ export class SecretSanta extends React.Component {
     assignRecipients() {
         const isResultValid = (result) => {
             for(var i = 0; i < result.length; i++ ) {
-                if (i == result[i]) {
+                if (i === result[i]) {
                     return false;
                 }
             }
@@ -81,44 +82,43 @@ export class SecretSanta extends React.Component {
         this.setState(newState);
     }
 
-    render () {
-        let current_page;
-        let hasHeader = true;
-        
+    loadPage() {
         switch(this.state.page) {
             case PAGE.START:
-                current_page = 
+                return(
                     <StartPage 
                         onStart={() => {this.toPage(PAGE.EDIT)}}
                         removeAllSantas={this.removeAllSantas}
-                    />;
-                hasHeader = false;
-                break;
+                    />
+                );
             case PAGE.EDIT:
-                current_page = 
+                return (
                     <EditPage 
                         santas={this.state.santas}
                         addSanta={this.addSanta}
                         removeSanta={this.removeSanta}
                         toPage={this.toPage}
-                    />;
-                break;
+                    />
+                );
             case PAGE.RESULT:
-                current_page =
+                return (
                     <ResultPage 
                         santas={this.state.santas}
                         assignRecipients={this.assignRecipients}
                         toPage={this.toPage}
                     />
-                break;
+                );
             default:
-                current_page = <p>Error! Page not found!</p>;
+                return (<p>Error! Page not found!</p>);
         }
+    }
 
+    render () {
         return (
             <div className='SecretSanta'>
-                { hasHeader && <Header /> }
-                { current_page }
+                { this.state.page != PAGE.START && <Header /> }
+                { this.loadPage() }
+                < Footer />
             </div>
         );
     }

@@ -28,7 +28,7 @@ export function Footer(props) {
     const openPage = (url) => window.open(url, "_blank");
 
     return (
-        <Navbar className='Footer justify-content-center' fixed="bottom">
+        <Navbar className='Footer justify-content-center'>
             <ButtonGroup className='Footer-links'>
                 <Button variant="link" onClick={() => setOverlayContent(creditOverlayContent)}>Credit</Button>
                 <Button variant="link" onClick={loadChangelog}>Change Log</Button>

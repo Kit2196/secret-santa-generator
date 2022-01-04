@@ -1,14 +1,12 @@
-.Start {
-    height: 100px;
-    width: 50vw;
+.StartPage {
+    flex: 1 1 auto;
     display: flex;
 
     justify-content: center;
 }
 
-.Start > div {
+.StartPage > div {
     display: flex;
-    flex-direction: column;
     
     justify-content: center;
     align-items: center;
