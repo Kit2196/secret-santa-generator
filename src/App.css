@@ -15,11 +15,13 @@ p {
 }
 
 .ButtonBar {
-  width: 100%;
+  width: auto;
   
   display: inline-flex;
 
   justify-content: space-evenly;
+
+  margin: 6px;
 }
 
 .logo {
@@ -31,7 +33,7 @@ p {
 }
 
 img {
-  height: 100%;
+  height: 100px;
 }
 
 @media only screen and (max-width: 600px) {
