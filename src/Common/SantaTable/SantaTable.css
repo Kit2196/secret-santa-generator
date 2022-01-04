@@ -1,15 +1,25 @@
 .SantaCard {
-    width: 150px;
-
-    margin: 6px;
+    margin: 3px;
 }
 
 .SantaTable {
     width: auto;
     flex: 1 1 auto;
     margin: 6px;
+    padding: 6px;
     overflow-y: scroll;
 
     border: solid black 1px;
 }
 
+.SantaTable > .row {
+    margin: 0px;
+}
+
+.SantaTable > .row > .col {
+    padding: 3px;
+}
+@media only screen and (max-width: 600px) {
+    .SantaCard {
+    }
+}
