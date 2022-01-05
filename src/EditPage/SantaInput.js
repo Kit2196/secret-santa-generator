@@ -1,23 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button, Form, FormControl, Overlay, Tooltip } from "react-bootstrap";
+import { Button, ThemeProvider } from "@mui/material";
+import React, { useRef, useState } from "react";
+import { Form, FormControl} from "react-bootstrap";
+import { ErrorOverlay } from "../Common/ErrorOverlay";
+import { theme } from "../constants";
 
 export function SantaInput(props) {
-    const cleanErrorTimer = 5000;
-
     const [newName, setNewName] = useState('');
     const [errorMsg, setErrorMsg] = useState(false);
 
     const refAddBtn = useRef(null);
-
-    const ERROR_EMPTY = "Please enter a name.";
-    const ERROR_DUPLICATE = "Name has been entered.";
-
-    useEffect(() => {
-        const cleanErrorMsg = setInterval(() => (
-            setErrorMsg(false)
-        ), cleanErrorTimer);
-        return () => clearInterval(cleanErrorMsg);
-    }, [errorMsg]);
     
     const handleChange = (e) => {
         setNewName(e.target.value);
@@ -26,27 +17,13 @@ export function SantaInput(props) {
     const handleAdd = (e) => {
         e.preventDefault();
 
-        if(validateName()) {
+        const error = props.validateName(newName, true);
+        setErrorMsg(error);
+
+        if(!error) {
             props.addSanta(newName);
             setNewName('');　// clean the textbox
-            setErrorMsg(false);
         }
-    }
-
-    const validateName = () => {
-        if (newName === '') {
-            setErrorMsg(ERROR_EMPTY);
-            return false;
-        }
-
-        for(let i = 0; i < props.santas.length; i++) {
-            if(props.santas[i].name === newName) {
-                setErrorMsg(ERROR_DUPLICATE);
-                return false;
-            }
-        }
-
-        return true;
     }
 
     return (
@@ -56,16 +33,17 @@ export function SantaInput(props) {
                 placeholder='Enter a name here...'
                 onChange={handleChange}
                 maxLength={20}/>
-            <Button 
-                ref={refAddBtn}
-                variant="outline-dark"
-                type="submit" 
-                value="Add">
-                Add
-            </Button>
-            <Overlay target={refAddBtn.current} show={errorMsg} placement="top">
-                <Tooltip>{errorMsg}</Tooltip>
-            </Overlay>
+            <ThemeProvider theme={theme}>
+                <Button 
+                    ref={refAddBtn}
+                    color="black"
+                    variant="outlined"
+                    type="submit" 
+                    value="Add">
+                    Add
+                </Button>
+            </ThemeProvider>
+            <ErrorOverlay target={refAddBtn.current} error={[errorMsg, setErrorMsg]} />
         </Form>
     );
 }

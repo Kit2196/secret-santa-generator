@@ -15,7 +15,7 @@ export function CustomModal(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <p>{ props.content }</p>
+                { props.content }
             </Modal.Body>
         </Modal>
     );

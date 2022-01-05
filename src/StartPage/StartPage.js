@@ -1,6 +1,7 @@
+import { Button, ThemeProvider } from "@mui/material";
 import React, { useEffect } from "react";
-import { Button, Container } from "react-bootstrap";
-import { logo } from "../constants";
+import { Container } from "react-bootstrap";
+import { logo, theme } from "../constants";
 import "./StartPage.css";
 
 export function StartPage(props) {
@@ -15,7 +16,9 @@ export function StartPage(props) {
                 <img src={logo} alt="logo" />
                 <div>
                     <p className="App-Name">Secret Santa Generator</p>
-                    <Button variant="outline-dark" onClick={props.onStart}>Start</Button>
+                    <ThemeProvider theme={theme}>
+                        <Button color="black" variant="outlined" onClick={props.onStart}>Start</Button>
+                    </ThemeProvider>
                 </div>
             </Container>
         </Container>

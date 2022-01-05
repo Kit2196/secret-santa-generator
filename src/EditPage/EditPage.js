@@ -1,55 +1,71 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import './EditPage.css';
-import { Button, Container, Overlay, Tooltip } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { SantaTable } from "../Common/SantaTable/SantaTable";
 import { SantaInput } from "./SantaInput";
-import { PAGE } from "../constants";
+import { PAGE, theme } from "../constants";
+import { ErrorOverlay } from "../Common/ErrorOverlay";
+import { Button, ThemeProvider } from "@mui/material";
 
 export function EditPage(props){
-    const cleanErrorTimer = 5000;
-
     const [errorMsg, setErrorMsg] = useState(false);
-
     const refConfirmBtn = useRef(null);
 
+    // Name validation Error
+    const ERROR_EMPTY = "Name cannot be empty.";
+    const ERROR_DUPLICATE = "Name has been entered.";
+
+    // Santa list validation Error
     const ERROR_NOT_ENOUGHT_CANDIDATE = "Please enter at least 2 names.";
-    
-    useEffect(() => {
-        const cleanErrorMsg = setInterval(() => (
-          setErrorMsg(false)
-        ), cleanErrorTimer);
-        return () => clearInterval(cleanErrorMsg); 
-    }, [errorMsg]);
+
+    // Button handles
+    const handleBack = () => {
+        props.toPage(PAGE.START);
+    }
 
     const handleConfirm = () => {
-        if(validateSantaList()) {
+        const error = validateSantaList();
+        setErrorMsg(error);
+        if (!error) {
             props.toPage(PAGE.RESULT);
         }
     };
 
-    const handleBack = () => {
-        props.toPage(PAGE.START);
+    // Validations return error message if invalid or, otherwise, null
+    const validateName = (name, checkDuplication) => {
+        if (name === '') {
+            return ERROR_EMPTY;
+        }
+
+        if(checkDuplication){
+            for(let i = 0; i < props.santas.length; i++) {
+                if(props.santas[i].name === name) {
+                    return ERROR_DUPLICATE;
+                }
+            }
+        }
+
+        return null;
     }
-    
+
     const validateSantaList = () => {
         if (props.santas.length < 2) {
-            setErrorMsg(ERROR_NOT_ENOUGHT_CANDIDATE);
-            return false;
+            return ERROR_NOT_ENOUGHT_CANDIDATE;
         } else {
-            return true;
+            return null;
         }
     }
 
     return (
         <Container className='EditPage' fluid>
-            <SantaInput {...props}/>
-            <SantaTable {...props}/>
+            <SantaInput {...props} validateName={validateName} />
+            <SantaTable {...props} validateName={validateName} />
             <div className='ButtonBar'>
-                <Button variant="outline-dark" onClick={handleBack}>Back</Button>
-                <Button ref={refConfirmBtn} variant="outline-dark" onClick={handleConfirm}>Confirm</Button>
-                <Overlay target={refConfirmBtn.current} show={errorMsg} placement="bottom">
-                    <Tooltip>{errorMsg}</Tooltip>
-                </Overlay>
+                <ThemeProvider theme={theme}>
+                    <Button color="black" variant="outlined" onClick={handleBack}>Back</Button>
+                    <Button ref={refConfirmBtn} color="black" variant="outlined" onClick={handleConfirm}>Confirm</Button>
+                </ThemeProvider>
+                <ErrorOverlay target={refConfirmBtn.current} error={[errorMsg, setErrorMsg]} />
             </div>
         </Container>
     );

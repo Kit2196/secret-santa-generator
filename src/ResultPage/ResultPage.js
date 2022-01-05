@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './ResultPage.css';
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { SantaTable } from "../Common/SantaTable/SantaTable";
 import { CustomModal } from "../Common/CustomModal";
-import { PAGE } from "../constants";
+import { PAGE, theme } from "../constants";
+import { Button, ThemeProvider } from "@mui/material";
 
 export function ResultPage(props) {
     const [showModal, setShowModal] = useState(false);
@@ -48,10 +49,13 @@ export function ResultPage(props) {
             <SantaTable santas={props.santas} showResult={showResult} assignedVisible={assignedVisible}/>
             <p className="result-note">*You can click on each box to check the recipient for a specific santa.</p>
             <div className='ButtonBar'>
-                <Button variant="outline-dark" onClick={handleBack}>Back</Button>
-                <Button variant="outline-dark" onClick={handleShuffle}>Reshuffle!</Button>
-                <Button variant="outline-dark" onClick={handleShow}>Show All!</Button>
-                <Button variant="outline-dark" onClick={handleFinish}>Finished</Button>
+
+                <ThemeProvider theme={theme}>
+                    <Button color="black" variant="outlined" onClick={handleBack}>Back</Button>
+                    <Button color="black" variant="outlined" onClick={handleShuffle}>Reshuffle!</Button>
+                    <Button color="black" variant="outlined" onClick={handleShow}>Show All!</Button>
+                    <Button color="black" variant="outlined" onClick={handleFinish}>Finished</Button>
+                </ThemeProvider>
             </div>
             <CustomModal 
                 show={showModal}

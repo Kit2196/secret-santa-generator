@@ -1,9 +1,10 @@
 ## [0.3.1] - 2022-1-5
 ### Added
 - Error messages for invalid actions
+- Ability to edit santas' names
 
 ### Changed
-- Minor UI changes
+- UI changes
 
 ### Fixes
 - More responsive layout using Bootstrap

@@ -1,5 +1,14 @@
+.EditCard button {
+    margin-left: 3px;
+}
 .SantaCard {
     margin: 3px;
+
+    min-height: 72px;
+}
+
+.SantaCard .card-title {
+    line-height: 36px;
 }
 
 .SantaTable {
@@ -19,7 +28,6 @@
 .SantaTable > .row > .col {
     padding: 3px;
 }
+
 @media only screen and (max-width: 600px) {
-    .SantaCard {
-    }
 }

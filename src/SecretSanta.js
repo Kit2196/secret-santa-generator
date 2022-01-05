@@ -20,6 +20,7 @@ export class SecretSanta extends React.Component {
 
         this.toPage = this.toPage.bind(this);
         this.addSanta = this.addSanta.bind(this);
+        this.editSanta = this.editSanta.bind(this);
         this.removeSanta = this.removeSanta.bind(this);
         this.removeAllSantas = this.removeAllSantas.bind(this);
         this.assignRecipients = this.assignRecipients.bind(this);
@@ -41,6 +42,17 @@ export class SecretSanta extends React.Component {
         
         let new_state = this.state;
         new_state.santas = [ ...new_state.santas, new_santa ];
+        this.setState(new_state);
+    }
+
+    editSanta(targetId, newProfile) {
+        let new_state = this.state;
+        for(let i = 0; i < new_state.santas.length; i++) {
+            if(new_state.santas[i].id === targetId) {
+                new_state.santas[i] = newProfile;
+                break;
+            }
+        }
         this.setState(new_state);
     }
 
@@ -96,6 +108,7 @@ export class SecretSanta extends React.Component {
                     <EditPage 
                         santas={this.state.santas}
                         addSanta={this.addSanta}
+                        editSanta={this.editSanta}
                         removeSanta={this.removeSanta}
                         toPage={this.toPage}
                     />
@@ -116,7 +129,7 @@ export class SecretSanta extends React.Component {
     render () {
         return (
             <div className='SecretSanta'>
-                { this.state.page != PAGE.START && <Header /> }
+                { this.state.page !== PAGE.START && <Header /> }
                 { this.loadPage() }
                 < Footer />
             </div>
