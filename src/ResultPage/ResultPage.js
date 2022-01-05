@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import './ResultPage.css';
 import { Button, Container } from "react-bootstrap";
 import { SantaTable } from "../Common/SantaTable/SantaTable";
-import { Overlay } from "../Common/Overlay";
+import { CustomModal } from "../Common/CustomModal";
 import { PAGE } from "../constants";
 
 export function ResultPage(props) {
-    const [overlayContent, setOverlayContent] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+    const [modalTitle, setModalTitle] = useState(null);
+    const [modalContent, setModalContent] = useState(null);
     const [assignedVisible, setAssignedVisibility] = useState(false);
 
     // Assign recipient once when the page is loaded
@@ -34,10 +36,11 @@ export function ResultPage(props) {
         // find recipient by array index
         const recipient = props.santas[santa.assigned];
 
-        setOverlayContent(<div className="Overlay-Result">
-            <p>{santa.name},</p>
-            <p>You are assigned to <strong>{recipient.name}</strong></p>
-        </div>);
+        setModalTitle(<p>{santa.name}</p>);
+        setModalContent(
+            <p>Your recipient is <strong>{recipient.name}</strong>!</p>
+        );
+        setShowModal(true);
     }
 
     return (
@@ -50,7 +53,12 @@ export function ResultPage(props) {
                 <Button variant="outline-dark" onClick={handleShow}>Show All!</Button>
                 <Button variant="outline-dark" onClick={handleFinish}>Finished</Button>
             </div>
-            {overlayContent && <Overlay content={overlayContent} disableOverlay={() => setOverlayContent(null)}/>}
+            <CustomModal 
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                title={modalTitle}
+                content={modalContent}
+            />
         </Container>
     );
 }
