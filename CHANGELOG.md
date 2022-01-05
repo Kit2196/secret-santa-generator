@@ -1,9 +1,12 @@
-## [0.3.1] - 2022-1-4
+## [0.3.1] - 2022-1-5
 ### Added
 - Error messages for invalid actions
 
+### Changed
+- Minor UI changes
+
 ### Fixes
-- Layout
+- More responsive layout using Bootstrap
 
 ## [0.3] - 2021-12-22 - Bootstrap
 ### Added
