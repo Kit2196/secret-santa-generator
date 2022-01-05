@@ -43,6 +43,7 @@ export function ResultPage(props) {
     return (
         <Container className='ResultPage' fluid>
             <SantaTable santas={props.santas} showResult={showResult} assignedVisible={assignedVisible}/>
+            <p className="result-note">*You can click on each box to check the recipient for a specific santa.</p>
             <div className='ButtonBar'>
                 <Button variant="outline-dark" onClick={handleBack}>Back</Button>
                 <Button variant="outline-dark" onClick={handleShuffle}>Reshuffle!</Button>

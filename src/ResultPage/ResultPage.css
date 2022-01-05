@@ -1,3 +1,7 @@
 .Overlay-Result > * {
     text-align: left;
 }
+
+.result-note {
+    font-size: smaller;
+}
