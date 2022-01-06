@@ -1,13 +1,13 @@
 .StartPage {
-    flex: 1 1 auto;
-    display: flex;
+  flex: 1 1 auto;
+  display: flex;
 
-    justify-content: center;
+  justify-content: center;
 }
 
 .StartPage > div {
-    display: flex;
-    
-    justify-content: center;
-    align-items: center;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
 }

@@ -1,15 +1,15 @@
 .SantaInput {
-    display: flex;
+  display: flex;
 
-    justify-content: center;
+  justify-content: center;
 
-    margin: 6px;
+  margin: 6px;
 }
 
 .SantaInput > input {
-    width: 200px;
+  width: 200px;
 }
 
 .EditPage > .SantaInput {
-    flex: 0 1 40px;
+  flex: 0 1 40px;
 }

@@ -1,32 +1,32 @@
 .EditCard button {
-    margin-left: 3px;
+  margin-left: 3px;
 }
 .SantaCard {
-    margin: 3px;
+  margin: 3px;
 
-    min-height: 72px;
+  min-height: 72px;
 }
 
 .SantaCard .card-title {
-    line-height: 36px;
+  line-height: 36px;
 }
 
 .SantaTable {
-    width: auto;
-    flex: 1 1 auto;
-    margin: 6px;
-    padding: 6px;
-    overflow-y: scroll;
+  width: auto;
+  flex: 1 1 auto;
+  margin: 6px;
+  padding: 6px;
+  overflow-y: scroll;
 
-    border: solid black 1px;
+  border: solid black 1px;
 }
 
 .SantaTable > .row {
-    margin: 0px;
+  margin: 0px;
 }
 
 .SantaTable > .row > .col {
-    padding: 3px;
+  padding: 3px;
 }
 
 @media only screen and (max-width: 600px) {

@@ -1,6 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { SecretSanta } from './SecretSanta';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { SecretSanta } from "./SecretSanta";
 
 function App() {
   return (
