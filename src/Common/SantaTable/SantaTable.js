@@ -8,10 +8,11 @@ export function SantaTable(props) {
     if (props.santas.length > 0) {
       return (
         <Row xs={2} sm={3} md={5}>
-          {props.santas.map((santa) => (
+          {props.santas.map((santa, index) => (
             <Col>
               <SantaCard
                 {...props}
+                index={index}
                 santa={santa}
                 assigned={
                   props.assignedVisible ? props.santas[santa.assigned] : null

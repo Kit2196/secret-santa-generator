@@ -1,35 +1,47 @@
 import { Button, ThemeProvider } from "@mui/material";
-import React, { useRef, useState } from "react";
-import { Form, FormControl } from "react-bootstrap";
-import { ErrorOverlay } from "../Common/ErrorOverlay";
-import { theme } from "../constants";
+import React, { useRef, useState, useEffect } from "react";
+import { Form, FormControl, Overlay, Tooltip } from "react-bootstrap";
+import { theme, ERROR_MSG_DURATION } from "../constants";
 
 export function SantaInput(props) {
-  const [newName, setNewName] = useState("");
-  const [errorMsg, setErrorMsg] = useState(false);
+  const [name, setName] = useState("");
+  const [error, setError] = useState(false);
 
   const refAddBtn = useRef(null);
 
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        setError(false);
+      }, ERROR_MSG_DURATION);
+    }
+  }, [error]);
+
   const handleChange = (e) => {
-    setNewName(e.target.value);
+    setName(e.target.value);
   };
 
   const handleAdd = (e) => {
     e.preventDefault();
 
-    const error = props.validateName(newName, true);
-    setErrorMsg(error);
+    const error = props.validateName(name, -1);
+    setError(error);
 
     if (!error) {
-      props.addSanta(newName);
-      setNewName(""); // clean the textbox
+      const newSanta = {
+        name: name,
+        assigned: null,
+      };
+
+      props.addSanta(newSanta);
+      setName(""); // clean the textbox
     }
   };
 
   return (
     <Form className="SantaInput" onSubmit={handleAdd}>
       <FormControl
-        value={newName}
+        value={name}
         placeholder="Enter a name here..."
         onChange={handleChange}
         maxLength={20}
@@ -45,10 +57,14 @@ export function SantaInput(props) {
           Add
         </Button>
       </ThemeProvider>
-      <ErrorOverlay
+      <Overlay
         target={refAddBtn.current}
-        error={[errorMsg, setErrorMsg]}
-      />
+        show={error}
+        placement="top"
+        transition={false}
+      >
+        <Tooltip>{error}</Tooltip>
+      </Overlay>
     </Form>
   );
 }

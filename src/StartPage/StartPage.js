@@ -1,15 +1,10 @@
 import { Button, ThemeProvider } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import { logo, theme } from "../constants";
 import "./StartPage.css";
 
 export function StartPage(props) {
-  // Reset santas, when the start screen is loaded
-  useEffect(() => {
-    props.removeAllSantas();
-  }, []);
-
   return (
     <Container className="StartPage">
       <Container>
