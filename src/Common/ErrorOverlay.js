@@ -7,11 +7,9 @@ export function ErrorOverlay(props) {
   const [errorMsg, setErrorMsg] = props.error;
 
   useEffect(() => {
-    const cleanErrorMsg = setInterval(
-      () => setErrorMsg(false),
-      cleanErrorTimer
-    );
-    return () => clearInterval(cleanErrorMsg);
+    if (errorMsg) {
+      setTimeout(() => setErrorMsg(false), cleanErrorTimer);
+    }
   }, [errorMsg]);
 
   return (
