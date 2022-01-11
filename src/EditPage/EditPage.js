@@ -11,6 +11,8 @@ export function EditPage(props) {
   const [santas, setSantas] = useState(props.santas);
   const [giftable, setGiftable] = useState(props.giftable);
 
+  const [focused, setFocused] = useState(false);
+
   const [error, setError] = useState(false);
   const refConfirmBtn = useRef(null);
 
@@ -40,6 +42,28 @@ export function EditPage(props) {
     if (!error) {
       props.updateGenerator(santas, giftable);
       props.toPage(PAGE.RESULT);
+    }
+  };
+
+  const focusStatus = (index) => {
+    if (focused === false) {
+      return null;
+    } else if (focused === index) {
+      return "giftable-focused";
+    } else {
+      return giftable[focused][index]
+        ? "giftable-enabled"
+        : "giftable-disabled";
+    }
+  };
+
+  const handleFocusClicked = (index) => {
+    if (index === focused) {
+      setFocused(false);
+    } else if (focused === false) {
+      setFocused(index);
+    } else {
+      setGiftable(SantaGenerator.flipGiftable(giftable, index, focused));
     }
   };
 
@@ -87,8 +111,12 @@ export function EditPage(props) {
     <Container className="EditPage" fluid>
       <SantaInput addSanta={addSanta} validateName={validateName} />
       <SantaTable
+        page={PAGE.EDIT}
         santas={santas}
         giftable={giftable}
+        focused={focused}
+        handleFocusClicked={handleFocusClicked}
+        focusStatus={focusStatus}
         editSanta={editSanta}
         removeSanta={removeSanta}
         validateName={validateName}

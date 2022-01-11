@@ -49,7 +49,7 @@ export class SantaGenerator {
    * @param {*} b index of santa (b)
    */
   static flipGiftable(giftable, a, b) {
-    let newGiftable = giftable;
+    let newGiftable = [...giftable];
     newGiftable[a][b] = !newGiftable[a][b];
     newGiftable[b][a] = !newGiftable[b][a];
 

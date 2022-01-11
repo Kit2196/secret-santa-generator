@@ -1,3 +1,9 @@
+## [0.3.2] - 2022-1-11
+
+### Added
+
+- Ability to exclude combinations(not implemented yet in shuffling)
+
 ## [0.3.1] - 2022-1-5
 
 ### Added

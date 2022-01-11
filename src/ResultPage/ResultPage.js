@@ -53,6 +53,7 @@ export function ResultPage(props) {
   return (
     <Container className="ResultPage" fluid>
       <SantaTable
+        page={PAGE.RESULT}
         santas={santas}
         showResult={showResult}
         assignedVisible={assignedVisible}

@@ -7,7 +7,7 @@ export function SantaTable(props) {
   const generateSantaCards = () => {
     if (props.santas.length > 0) {
       return (
-        <Row xs={2} sm={3} md={5}>
+        <Row xs={2} sm={3} md={4}>
           {props.santas.map((santa, index) => (
             <Col>
               <SantaCard

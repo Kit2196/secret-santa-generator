@@ -13,3 +13,18 @@
 .EditPage > .SantaInput {
   flex: 0 1 40px;
 }
+
+.giftable-focused {
+  border-width: 5px;
+  border-color: green;
+}
+
+.giftable-enabled {
+  border-width: 3px;
+  border-color: green;
+}
+
+.giftable-disabled {
+  border-width: 3px;
+  border-color: red;
+}
